@@ -69,7 +69,6 @@ export default function Privacy() {
             <div className="section-head">
               <h2 className="h2">Aviation Disruption Resiliency — Standard Contract</h2>
               <p className="lead">Formal agreement and terms for the Aviation Disruption Recovery Agent offering.</p>
-              <p style={{ marginTop: 12, color: '#6b7280', fontSize: 14 }}>DRAFT - SUBJECT TO CONTRACT | Last updated: 2026-05-08</p>
             </div>
             <div className="container" style={{ paddingTop: 12 }}>
               
@@ -540,86 +539,33 @@ export default function Privacy() {
 
                 <h2 style={{ fontSize: 20, fontWeight: 700, marginTop: 40, marginBottom: 20, paddingTop: 20, borderTop: '2px solid #e5e7eb' }}>13. Definitions</h2>
                 <dl className="definition-list">
-                  <dt>Affiliate</dt>
-                  <dd>any entity that directly or indirectly controls, is controlled by, or is under common control with a party. "Control" means ownership of more than fifty percent (50%) of the voting securities of an entity or the power to direct its management and policies.</dd>
-
-                  <dt>AI Output</dt>
-                  <dd>has the meaning given in Section 1.11.</dd>
-
-                  <dt>Airline Customisations</dt>
-                  <dd>has the meaning given in Section 1.10.</dd>
-
-                  <dt>Anti-Corruption Laws</dt>
-                  <dd>all applicable laws prohibiting fraud, bribery, corruption, money laundering, and related offences, including the U.S. Foreign Corrupt Practices Act, and the UK Bribery Act 2010.</dd>
-
-                  <dt>Authorised User</dt>
-                  <dd>any employee, contractor, or agent of Customer who is authorised by Customer to access and use the Offering under this Agreement, including OCC personnel, up to the maximum number specified in the applicable Order.</dd>
-
-                  <dt>Business Day</dt>
-                  <dd>a day (other than a Saturday, Sunday, or public holiday) on which banks are open for general business in New Delhi, India.</dd>
-
-                  <dt>Confidential Information</dt>
-                  <dd>has the meaning given in Section 3.2.</dd>
-
-                  <dt>Customer Data</dt>
-                  <dd>all data supplied to Publisher by or on behalf of Customer through use of the Offering, including Passenger Data and Airline Customisations, but excluding Support Data.</dd>
-
-                  <dt>Data Protection Laws</dt>
-                  <dd>any law, regulation, or binding regulatory guidance applicable to either party relating to the processing, protection, privacy, or security of personal data and any applicable national or regional data protection legislation, as amended or replaced from time to time.</dd>
-
-                  <dt>Documentation</dt>
-                  <dd>all user manuals, technical specifications, and other materials made available by Publisher describing the functionality, configuration, and use of the Offering, as updated by Publisher from time to time in accordance with Section 1.13.</dd>
-
-                  <dt>Feedback</dt>
-                  <dd>any idea, suggestion, comment, or input voluntarily provided by Customer to Publisher relating to the Offering or Publisher's products and services.</dd>
-
-                  <dt>Force Majeure Event</dt>
-                  <dd>has the meaning given in Section 5.</dd>
-
-                  <dt>GDPR</dt>
-                  <dd>Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and the free movement of such data.</dd>
-
-                  <dt>HITL (Human-in-the-Loop)</dt>
-                  <dd>the workflow in which Customer's Authorised Users review and approve passenger notifications before they are dispatched by the Offering.</dd>
-
-                  <dt>Insolvent</dt>
-                  <dd>the occurrence of any of the following in relation to a party: admission in writing of inability to pay debts as they fall due; making a general assignment for the benefit of creditors; appointment of a receiver, administrator, or trustee over its assets (unless set aside within 60 days); filing of an insolvency petition (unless dismissed within 60 days); adjudication as bankrupt or insolvent; commencement of winding-up or liquidation; or cessation of business.</dd>
-
-                  <dt>Monthly Uptime Percentage</dt>
-                  <dd>has the meaning given in Annexure A.</dd>
-
-                  <dt>Offering</dt>
-                  <dd>the Aviation Disruption Recovery Agent platform and all associated services, features, AI agents, Admin Dashboard, MCP server, and components made available by Publisher under this Agreement, as described in the Documentation.</dd>
-
-                  <dt>Order</dt>
-                  <dd>a written order form, statement of work, or equivalent commercial document executed by both parties that sets out the Subscription fees, Setup Fee, billing cadence, number of Authorised Users, Subscription Year commencement date, and any other agreed commercial terms, and which incorporates this Agreement by reference. In the event of any conflict between an Order and this Agreement, this Agreement prevails unless the Order expressly states otherwise.</dd>
-
-                  <dt>Passenger Data</dt>
-                  <dd>Personal Data relating to airline passengers processed by Publisher on behalf of Customer in connection with the Offering, as further described in Section 2.1.</dd>
-
-                  <dt>Personal Data</dt>
-                  <dd>any information relating to an identified or identifiable natural person, as defined under applicable Data Protection Laws.</dd>
-
-                  <dt>Representatives</dt>
-                  <dd>a party's employees, Affiliates, contractors, advisors, and consultants.</dd>
-
-                  <dt>Setup Fee</dt>
-                  <dd>has the meaning given in Section 10.2.</dd>
-
-                  <dt>Standard Contractual Clauses</dt>
-                  <dd>the standard contractual clauses for the transfer of personal data to third countries as set out in Commission Implementing Decision (EU) 2021/914 of 4 June 2021, Module 2 (Controller to Processor).</dd>
-
-                  <dt>Sub-processor</dt>
-                  <dd>any third party to whom Publisher delegates its data processing obligations under this Agreement, including Publisher Affiliates and infrastructure providers, who stores, collects, transfers, or otherwise processes Personal Data or Customer Data in connection with providing the Offering.</dd>
-
-                  <dt>Subscription</dt>
-                  <dd>Customer's paid right to access and use the Offering for the Subscription Year, as granted under and subject to the terms of this Agreement and the applicable Order.</dd>
-
-                  <dt>Subscription Year</dt>
-                  <dd>has the meaning given in Section 1.2.</dd>
-
-                  <dt>Support Data</dt>
-                  <dd>all data, including text, sound, video, image files, or software, provided to Publisher by or on behalf of Customer through an engagement with Publisher to obtain technical support for the Offering.</dd>
+                  <dt><b>Affiliate: </b>Any entity that directly or indirectly controls, is controlled by, or is under common control with a party. "Control" means ownership of more than fifty percent (50%) of the voting securities of an entity or the power to direct its management and policies.</dt>
+                  <dt><b>AI Output: </b>Has the meaning given in Section 1.11.</dt>
+                  <dt><b>Airline Customisations: </b>Has the meaning given in Section 1.10.</dt>
+                  <dt><b>Anti-Corruption Laws: </b>All applicable laws prohibiting fraud, bribery, corruption, money laundering, and related offences, including the U.S. Foreign Corrupt Practices Act, and the UK Bribery Act 2010.</dt>
+                  <dt><b>Authorised User: </b>Any employee, contractor, or agent of Customer who is authorised by Customer to access and use the Offering under this Agreement, including OCC personnel, up to the maximum number specified in the applicable Order.</dt>           
+                  <dt><b>Business Day: </b>A day (other than a Saturday, Sunday, or public holiday) on which banks are open for general business in New Delhi, India.</dt>
+                  <dt><b>Confidential Information: </b>Has the meaning given in Section 3.2.</dt>
+                  <dt><b>Customer Data: </b>All data supplied to Publisher by or on behalf of Customer through use of the Offering, including Passenger Data and Airline Customisations, but excluding Support Data.</dt>                 
+                  <dt><b>Data Protection Laws: </b>Any law, regulation, or binding regulatory guidance applicable to either party relating to the processing, protection, privacy, or security of personal data and any applicable national or regional data protection legislation, as amended or replaced from time to time.</dt>                  
+                  <dt><b>Documentation: </b>All user manuals, technical specifications, and other materials made available by Publisher describing the functionality, configuration, and use of the Offering, as updated by Publisher from time to time in accordance with Section 1.13.</dt>
+                  <dt><b>Feedback: </b>Any idea, suggestion, comment, or input voluntarily provided by Customer to Publisher relating to the Offering or Publisher's products and services.</dt>           
+                  <dt><b>Force Majeure Event: </b>Has the meaning given in Section 5.</dt>
+                  <dt><b>DPRG: </b>Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and the free movement of such data.</dt>
+                  <dt><b>HITL (Human-in-the-Loop): </b>The workflow in which Customer's Authorised Users review and approve passenger notifications before they are dispatched by the Offering.</dt>                  <dt><b>Insolvent: </b>The occurrence of any of the following in relation to a party: admission in writing of inability to pay debts as they fall due; making a general assignment for the benefit of creditors; appointment of a receiver, administrator, or trustee over its assets (unless set aside within 60 days); filing of an insolvency petition (unless dismissed within 60 days); adjudication as bankrupt or insolvent; commencement of winding-up or liquidation; or cessation of business.</dt>
+                  <dt><b>Monthly Uptime Percentage: </b>Has the meaning given in Annexure A.</dt>
+                  <dt><b>Offering: </b>The Aviation Disruption Recovery Agent platform and all associated services, features, AI agents, Admin Dashboard, MCP server, and components made available by Publisher under this Agreement, as described in the Documentation.</dt>
+                  <dt><b>Order: </b>A written order form, statement of work, or equivalent commercial document executed by both parties that sets out the Subscription fees, Setup Fee, billing cadence, number of Authorised Users, Subscription Year commencement date, and any other agreed commercial terms, and which incorporates this Agreement by reference. In the event of any conflict between an Order and this Agreement, this Agreement prevails unless the Order expressly states otherwise.</dt>
+                  <dt><b>Passenger Data: </b>Personal Data relating to airline passengers processed by Publisher on behalf of Customer in connection with the Offering, as further described in Section 2.1.</dt>
+                  <dt><b>Personal Data: </b>Any information relating to an identified or identifiable natural person, as defined under applicable Data Protection Laws.</dt>
+                  <dt><b>Representatives: </b>A party's employees, Affiliates, contractors, advisors, and consultants.</dt>
+                  <dt><b>Setup Fee: </b>Has the meaning given in Section 10.2.</dt>
+                  <dt><b>Standard Contractual Clauses: </b>The standard contractual clauses for the transfer of personal data to third countries as set out in Commission Implementing Decision (EU) 2021/914 of 4 June 2021, Module 2 (Controller to Processor).</dt>
+                  <dt><b>Sub-processor: </b>Any third party to whom Publisher delegates its data processing obligations under this Agreement, including Publisher Affiliates and infrastructure providers, who stores, collects, transfers, or otherwise processes Personal Data or Customer Data in connection with providing the Offering.</dt>
+                  <dt><b>Subscription: </b>Customer's paid right to access and use the Offering for the Subscription Year, as granted under and subject to the terms of this Agreement and the applicable Order.</dt>
+                  <dt><b>Subscription Year: </b>Has the meaning given in Section 1.2.</dt>
+                  <dt><b>Support Data: </b>All data, including text, sound, video, image files, or software, provided to Publisher by or on behalf of Customer through an engagement with Publisher to obtain technical support for the Offering.</dt>
+                  
                 </dl>
 
                 <h2 style={{ fontSize: 20, fontWeight: 700, marginTop: 40, marginBottom: 20, paddingTop: 20, borderTop: '2px solid #e5e7eb' }}>ANNEXURE A — SERVICE LEVEL AGREEMENT</h2>
@@ -811,12 +757,12 @@ export default function Privacy() {
 
                 <h3 style={{ fontSize: 16, fontWeight: 700, marginTop: 24, marginBottom: 12 }}>5. Support Contact Details</h3>
                 <dl className="definition-list">
-                  <dt>Primary Support Email:</dt>
-                  <dd>Deepankur.sinha@aionos.ai</dd>
-                  <dt>Support Portal:</dt>
-                  <dd>Admin Dashboard</dd>
-                  <dt>Emergency Contact (Severity 1 Only):</dt>
-                  <dd>Rishabh.Raizada@aionos.ai</dd>
+                  <dt>Primary Support Email: Deepankur.sinha@aionos.ai</dt>
+                  
+                  <dt>Support Portal: Admin Dashboard</dt>
+                  
+                  <dt>Emergency Contact (Severity 1 Only): Rishabh.Raizada@aionos.ai</dt>
+                  
                 </dl>
                 <p>Emergency contact details shall be used solely for Severity 1 Incidents affecting production environments.</p>
 
@@ -825,7 +771,7 @@ export default function Privacy() {
               <div className="footer">
                 <div>© AionOS India Private Limited · Third Floor, Dr. Gopal Das Bhawan, 28 Barakhamba Road, Connaught Place, New Delhi – 110001</div>
                 <div style={{ marginTop: 8 }}>
-                  Legal contact: <a className="legal-link" href="mailto:aionoslegal@aionos.ai">aionoslegal@aionos.ai</a>
+                  Legal contact: <a className="legal-link" href="mailto:aionoslegal@aionos.ai"style={{color: "blue",textDecoration: "underline",}}>aionoslegal@aionos.ai</a>
                 </div>
               </div>
             </div>
@@ -841,16 +787,6 @@ export default function Privacy() {
 
                   <p className="lead">
                     Formal agreement and terms for the Aviation Disruption Recovery Agent offering.
-                  </p>
-
-                  <p
-                    style={{
-                      marginTop: 12,
-                      color: "#6b7280",
-                      fontSize: 14,
-                    }}
-                  >
-                    DRAFT - SUBJECT TO CONTRACT | Last updated: 2026-05-08
                   </p>
                 </div>
 
@@ -1339,86 +1275,32 @@ export default function Privacy() {
 
                 <h2 style={{ fontSize: 20, fontWeight: 700, marginTop: 40, marginBottom: 20, paddingTop: 20, borderTop: '2px solid #e5e7eb' }}>13. Definitions</h2>
                 <dl className="definition-list">
-                  <dt>Affiliate</dt>
-                  <dd>any entity that directly or indirectly controls, is controlled by, or is under common control with a party. "Control" means ownership of more than fifty percent (50%) of the voting securities of an entity or the power to direct its management and policies.</dd>
-
-                  <dt>AI Output</dt>
-                  <dd>has the meaning given in Section 1.11.</dd>
-
-                  <dt>Airline Customisations</dt>
-                  <dd>has the meaning given in Section 1.10.</dd>
-
-                  <dt>Anti-Corruption Laws</dt>
-                  <dd>all applicable laws prohibiting fraud, bribery, corruption, money laundering, and related offences, including the U.S. Foreign Corrupt Practices Act, and the UK Bribery Act 2010.</dd>
-
-                  <dt>Authorised User</dt>
-                  <dd>any employee, contractor, or agent of Customer who is authorised by Customer to access and use the Offering under this Agreement, including OCC personnel, up to the maximum number specified in the applicable Order.</dd>
-
-                  <dt>Business Day</dt>
-                  <dd>a day (other than a Saturday, Sunday, or public holiday) on which banks are open for general business in New Delhi, India.</dd>
-
-                  <dt>Confidential Information</dt>
-                  <dd>has the meaning given in Section 3.2.</dd>
-
-                  <dt>Customer Data</dt>
-                  <dd>all data supplied to Publisher by or on behalf of Customer through use of the Offering, including Passenger Data and Airline Customisations, but excluding Support Data.</dd>
-
-                  <dt>Data Protection Laws</dt>
-                  <dd>any law, regulation, or binding regulatory guidance applicable to either party relating to the processing, protection, privacy, or security of personal data and any applicable national or regional data protection legislation, as amended or replaced from time to time.</dd>
-
-                  <dt>Documentation</dt>
-                  <dd>all user manuals, technical specifications, and other materials made available by Publisher describing the functionality, configuration, and use of the Offering, as updated by Publisher from time to time in accordance with Section 1.13.</dd>
-
-                  <dt>Feedback</dt>
-                  <dd>any idea, suggestion, comment, or input voluntarily provided by Customer to Publisher relating to the Offering or Publisher's products and services.</dd>
-
-                  <dt>Force Majeure Event</dt>
-                  <dd>has the meaning given in Section 5.</dd>
-
-                  <dt>GDPR</dt>
-                  <dd>Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and the free movement of such data.</dd>
-
-                  <dt>HITL (Human-in-the-Loop)</dt>
-                  <dd>the workflow in which Customer's Authorised Users review and approve passenger notifications before they are dispatched by the Offering.</dd>
-
-                  <dt>Insolvent</dt>
-                  <dd>the occurrence of any of the following in relation to a party: admission in writing of inability to pay debts as they fall due; making a general assignment for the benefit of creditors; appointment of a receiver, administrator, or trustee over its assets (unless set aside within 60 days); filing of an insolvency petition (unless dismissed within 60 days); adjudication as bankrupt or insolvent; commencement of winding-up or liquidation; or cessation of business.</dd>
-
-                  <dt>Monthly Uptime Percentage</dt>
-                  <dd>has the meaning given in Annexure A.</dd>
-
-                  <dt>Offering</dt>
-                  <dd>the Aviation Disruption Recovery Agent platform and all associated services, features, AI agents, Admin Dashboard, MCP server, and components made available by Publisher under this Agreement, as described in the Documentation.</dd>
-
-                  <dt>Order</dt>
-                  <dd>a written order form, statement of work, or equivalent commercial document executed by both parties that sets out the Subscription fees, Setup Fee, billing cadence, number of Authorised Users, Subscription Year commencement date, and any other agreed commercial terms, and which incorporates this Agreement by reference. In the event of any conflict between an Order and this Agreement, this Agreement prevails unless the Order expressly states otherwise.</dd>
-
-                  <dt>Passenger Data</dt>
-                  <dd>Personal Data relating to airline passengers processed by Publisher on behalf of Customer in connection with the Offering, as further described in Section 2.1.</dd>
-
-                  <dt>Personal Data</dt>
-                  <dd>any information relating to an identified or identifiable natural person, as defined under applicable Data Protection Laws.</dd>
-
-                  <dt>Representatives</dt>
-                  <dd>a party's employees, Affiliates, contractors, advisors, and consultants.</dd>
-
-                  <dt>Setup Fee</dt>
-                  <dd>has the meaning given in Section 10.2.</dd>
-
-                  <dt>Standard Contractual Clauses</dt>
-                  <dd>the standard contractual clauses for the transfer of personal data to third countries as set out in Commission Implementing Decision (EU) 2021/914 of 4 June 2021, Module 2 (Controller to Processor).</dd>
-
-                  <dt>Sub-processor</dt>
-                  <dd>any third party to whom Publisher delegates its data processing obligations under this Agreement, including Publisher Affiliates and infrastructure providers, who stores, collects, transfers, or otherwise processes Personal Data or Customer Data in connection with providing the Offering.</dd>
-
-                  <dt>Subscription</dt>
-                  <dd>Customer's paid right to access and use the Offering for the Subscription Year, as granted under and subject to the terms of this Agreement and the applicable Order.</dd>
-
-                  <dt>Subscription Year</dt>
-                  <dd>has the meaning given in Section 1.2.</dd>
-
-                  <dt>Support Data</dt>
-                  <dd>all data, including text, sound, video, image files, or software, provided to Publisher by or on behalf of Customer through an engagement with Publisher to obtain technical support for the Offering.</dd>
+                  <dt><b>Affiliate: </b>Any entity that directly or indirectly controls, is controlled by, or is under common control with a party. "Control" means ownership of more than fifty percent (50%) of the voting securities of an entity or the power to direct its management and policies.</dt>
+                  <dt><b>AI Output: </b>Has the meaning given in Section 1.11.</dt>
+                  <dt><b>Airline Customisations: </b>Has the meaning given in Section 1.10.</dt>
+                  <dt><b>Anti-Corruption Laws: </b>All applicable laws prohibiting fraud, bribery, corruption, money laundering, and related offences, including the U.S. Foreign Corrupt Practices Act, and the UK Bribery Act 2010.</dt>
+                  <dt><b>Authorised User: </b>Any employee, contractor, or agent of Customer who is authorised by Customer to access and use the Offering under this Agreement, including OCC personnel, up to the maximum number specified in the applicable Order.</dt>           
+                  <dt><b>Business Day: </b>A day (other than a Saturday, Sunday, or public holiday) on which banks are open for general business in New Delhi, India.</dt>
+                  <dt><b>Confidential Information: </b>Has the meaning given in Section 3.2.</dt>
+                  <dt><b>Customer Data: </b>All data supplied to Publisher by or on behalf of Customer through use of the Offering, including Passenger Data and Airline Customisations, but excluding Support Data.</dt>                 
+                  <dt><b>Data Protection Laws: </b>Any law, regulation, or binding regulatory guidance applicable to either party relating to the processing, protection, privacy, or security of personal data and any applicable national or regional data protection legislation, as amended or replaced from time to time.</dt>                  
+                  <dt><b>Documentation: </b>All user manuals, technical specifications, and other materials made available by Publisher describing the functionality, configuration, and use of the Offering, as updated by Publisher from time to time in accordance with Section 1.13.</dt>
+                  <dt><b>Feedback: </b>Any idea, suggestion, comment, or input voluntarily provided by Customer to Publisher relating to the Offering or Publisher's products and services.</dt>           
+                  <dt><b>Force Majeure Event: </b>Has the meaning given in Section 5.</dt>
+                  <dt><b>DPRG: </b>Regulation (EU) 2016/679 of the European Parliament and of the Council of 27 April 2016 on the protection of natural persons with regard to the processing of personal data and the free movement of such data.</dt>
+                  <dt><b>HITL (Human-in-the-Loop): </b>The workflow in which Customer's Authorised Users review and approve passenger notifications before they are dispatched by the Offering.</dt>                  <dt><b>Insolvent: </b>The occurrence of any of the following in relation to a party: admission in writing of inability to pay debts as they fall due; making a general assignment for the benefit of creditors; appointment of a receiver, administrator, or trustee over its assets (unless set aside within 60 days); filing of an insolvency petition (unless dismissed within 60 days); adjudication as bankrupt or insolvent; commencement of winding-up or liquidation; or cessation of business.</dt>
+                  <dt><b>Monthly Uptime Percentage: </b>Has the meaning given in Annexure A.</dt>
+                  <dt><b>Offering: </b>The Aviation Disruption Recovery Agent platform and all associated services, features, AI agents, Admin Dashboard, MCP server, and components made available by Publisher under this Agreement, as described in the Documentation.</dt>
+                  <dt><b>Order: </b>A written order form, statement of work, or equivalent commercial document executed by both parties that sets out the Subscription fees, Setup Fee, billing cadence, number of Authorised Users, Subscription Year commencement date, and any other agreed commercial terms, and which incorporates this Agreement by reference. In the event of any conflict between an Order and this Agreement, this Agreement prevails unless the Order expressly states otherwise.</dt>
+                  <dt><b>Passenger Data: </b>Personal Data relating to airline passengers processed by Publisher on behalf of Customer in connection with the Offering, as further described in Section 2.1.</dt>
+                  <dt><b>Personal Data: </b>Any information relating to an identified or identifiable natural person, as defined under applicable Data Protection Laws.</dt>
+                  <dt><b>Representatives: </b>A party's employees, Affiliates, contractors, advisors, and consultants.</dt>
+                  <dt><b>Setup Fee: </b>Has the meaning given in Section 10.2.</dt>
+                  <dt><b>Standard Contractual Clauses: </b>The standard contractual clauses for the transfer of personal data to third countries as set out in Commission Implementing Decision (EU) 2021/914 of 4 June 2021, Module 2 (Controller to Processor).</dt>
+                  <dt><b>Sub-processor: </b>Any third party to whom Publisher delegates its data processing obligations under this Agreement, including Publisher Affiliates and infrastructure providers, who stores, collects, transfers, or otherwise processes Personal Data or Customer Data in connection with providing the Offering.</dt>
+                  <dt><b>Subscription: </b>Customer's paid right to access and use the Offering for the Subscription Year, as granted under and subject to the terms of this Agreement and the applicable Order.</dt>
+                  <dt><b>Subscription Year: </b>Has the meaning given in Section 1.2.</dt>
+                  <dt><b>Support Data: </b>All data, including text, sound, video, image files, or software, provided to Publisher by or on behalf of Customer through an engagement with Publisher to obtain technical support for the Offering.</dt>
                 </dl>
 
                 <h2 style={{ fontSize: 20, fontWeight: 700, marginTop: 40, marginBottom: 20, paddingTop: 20, borderTop: '2px solid #e5e7eb' }}>ANNEXURE A — SERVICE LEVEL AGREEMENT</h2>
@@ -1610,12 +1492,12 @@ export default function Privacy() {
 
                 <h3 style={{ fontSize: 16, fontWeight: 700, marginTop: 24, marginBottom: 12 }}>5. Support Contact Details</h3>
                 <dl className="definition-list">
-                  <dt>Primary Support Email:</dt>
-                  <dd>Deepankur.sinha@aionos.ai</dd>
-                  <dt>Support Portal:</dt>
-                  <dd>Admin Dashboard</dd>
-                  <dt>Emergency Contact (Severity 1 Only):</dt>
-                  <dd>Rishabh.Raizada@aionos.ai</dd>
+                  <dt>Primary Support Email: Deepankur.sinha@aionos.ai</dt>
+                  
+                  <dt>Support Portal: Admin Dashboard</dt>
+                  
+                  <dt>Emergency Contact (Severity 1 Only): Rishabh.Raizada@aionos.ai</dt>
+                  
                 </dl>
                 <p>Emergency contact details shall be used solely for Severity 1 Incidents affecting production environments.</p>
 
