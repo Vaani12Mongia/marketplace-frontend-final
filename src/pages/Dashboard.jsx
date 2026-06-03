@@ -70,13 +70,13 @@ export default function Dashboard() {
               session.tenantId
             )
 
-            // setCallsSuccessful(
-            //   usage.callsSuccessful || 0
-            // )
+            setCallsSuccessful(
+              usage.callsSuccessful || 0
+            )
 
-            // setCallsFailed(
-            //   usage.callsFailed || 0
-            // )
+            setCallsFailed(
+              usage.callsFailed || 0
+            )
 
             setCallsTotal(
               usage.callsTotal || 0
@@ -203,26 +203,7 @@ export default function Dashboard() {
           <div className="dash-card-stat">{messageCount}</div>
           <div className="dash-card-stat-label">Messages</div>
         </Link>
-      </div>
-
-      {/* <div className="card quick-summary">
-        <h2>Quick Summary</h2>
-        <div className="summary-grid">
-          <div className="summary-item">
-            <div className="number">{brandCount}</div>
-            <div className="label">Brand Documents</div>
-          </div>
-          <div className="summary-item">
-            <div className="number">{promptCount}</div>
-            <div className="label">Custom Prompts</div>
-          </div>
-          <div className="summary-item">
-            <div className="number">{messageCount}</div>
-            <div className="label">Total Templates</div>
-          </div>
-        </div>
-      </div> */}
-      
+      </div>      
     </div>
   )
 }
