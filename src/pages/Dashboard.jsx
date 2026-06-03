@@ -12,8 +12,8 @@ export default function Dashboard() {
   const [messagingAgent, setMessagingAgent] = useState('Not selected')
   const [recoveryAgentActive, setRecoveryAgentActive] = useState(true)
   const [messagingAgentActive, setMessagingAgentActive] = useState(true)
-  // const [callsSuccessful, setCallsSuccessful] = useState(0)
-  // const [callsFailed, setCallsFailed] = useState(0)
+  const [callsSuccessful, setCallsSuccessful] = useState(0)
+  const [callsFailed, setCallsFailed] = useState(0)
   const [callsTotal, setCallsTotal] = useState(0)
 
   useEffect(() => {
@@ -142,21 +142,21 @@ export default function Dashboard() {
           }}
         >
           <div className="summary-item">
-            {/* <div className="number">
+            <div className="number">
               {callsSuccessful}
             </div>
             <div className="label">
               Successful Calls
-            </div> */}
+            </div>
           </div>
 
           <div className="summary-item">
-            {/* <div className="number">
+            <div className="number">
               {callsFailed}
             </div>
             <div className="label">
               Failed Calls
-            </div> */}
+            </div>
           </div>
 
           <div className="summary-item">

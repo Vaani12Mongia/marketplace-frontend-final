@@ -25,15 +25,7 @@ export default function Privacy() {
       </header>
 
       <section className="privacy-section" style={{ paddingBottom: 72 }}>
-        {activeTab === "azure" && (
-          <>
-            <div className="section-head">
-              <h2 className="h2">Aviation Disruption Resiliency — Standard Contract</h2>
-              <p className="lead">Formal agreement and terms for the Aviation Disruption Recovery Agent offering.</p>
-              <p style={{ marginTop: 12, color: '#6b7280', fontSize: 14 }}>DRAFT - SUBJECT TO CONTRACT | Last updated: 2026-05-08</p>
-            </div>
-            <div className="container" style={{ paddingTop: 12 }}>
-              <div
+        <div
                 style={{
                   display: "flex",
                   justifyContent: "center",
@@ -72,7 +64,16 @@ export default function Privacy() {
                   IBM
                 </button>
               </div>
-              <h3 style={{ fontSize: 18, fontWeight: 700, marginTop: 32, marginBottom: 20, color: '#6366f1' }}>Azure</h3>
+        {activeTab === "azure" && (
+          <>
+            <div className="section-head">
+              <h2 className="h2">Aviation Disruption Resiliency — Standard Contract</h2>
+              <p className="lead">Formal agreement and terms for the Aviation Disruption Recovery Agent offering.</p>
+              <p style={{ marginTop: 12, color: '#6b7280', fontSize: 14 }}>DRAFT - SUBJECT TO CONTRACT | Last updated: 2026-05-08</p>
+            </div>
+            <div className="container" style={{ paddingTop: 12 }}>
+              
+              {/* <h3 style={{ fontSize: 18, fontWeight: 700, marginTop: 32, marginBottom: 20, color: '#6366f1' }}>Azure</h3> */}
 
               <div style={{ maxWidth: 920, margin: '0 auto', color: '#374151', lineHeight: 1.8, fontSize: '15px' }}>
 
@@ -853,7 +854,7 @@ export default function Privacy() {
                   </p>
                 </div>
 
-                <h3
+                {/* <h3
                   style={{
                     fontSize: 18,
                     fontWeight: 700,
@@ -863,7 +864,8 @@ export default function Privacy() {
                   }}
                 >
                   IBM
-                </h3>
+                </h3> */}
+                {/* <h3 style={{ fontSize: 18, fontWeight: 700, marginTop: 32, marginBottom: 20, color: '#6366f1' }}>IBM</h3> */}
 
                 <div
                   style={{
