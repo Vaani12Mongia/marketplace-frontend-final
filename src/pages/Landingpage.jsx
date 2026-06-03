@@ -299,7 +299,7 @@ const Index = () => {
               passenger communication, and cloud scalability.
             </p>
             <p className="faq-support">
-              For any more questions or doubts, contact at <a href="mailto:support@aionos.ai">support@aionos.ai</a>.
+              For any more questions or doubts, contact at <a href="mailto:Alliances.support@aionos.ai">Alliances.support@aionos.ai</a>.
             </p>
           </div>
           <div className="faq-list">
