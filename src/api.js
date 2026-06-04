@@ -59,7 +59,7 @@ async function statusRequest() {
 }
 
 async function azureStatusRequest() {
-  const response = await fetch('/api/azure-status', {
+  const response = await fetch(`${API_BASE}/azure-status`, {
     headers: { 'Content-Type': 'application/json' },
   })
 
@@ -116,7 +116,7 @@ export const api = {
   approveGatewayKey: (tenantId) => request('/gateway/approve', { method: 'POST', body: JSON.stringify({ tenantId }) }),
 
   getHealthStatus: async () => {
-    const response = await fetch('/api/health', { headers: { 'Content-Type': 'application/json' } })
+    const response = await fetch(`${API_BASE}/health`, { headers: { 'Content-Type': 'application/json' } })
     if (!response.ok) {
       let message = 'Failed to load health status'
       try {
