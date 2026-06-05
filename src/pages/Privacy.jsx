@@ -11,12 +11,12 @@ export default function Privacy() {
             <img src={aionosDarkLogo} alt="Aionos" className="wordmark" />
           </a>
           <nav className="nav">
-            <a href="#home">Home</a>
-            <a href="#solution">Solution</a>
-            <a href="#features">Features</a>
-            <a href="#impact">Impact</a>
-            <a href="#future">Future</a>
-            <a href="#contact">Contact</a>
+            <a href="/#home">Home</a>
+            <a href="/#solution">Solution</a>
+            <a href="/#features">Features</a>
+            <a href="/#impact">Impact</a>
+            <a href="/#future">Future</a>
+            <a href="/#contact">Contact</a>
           </nav>
           <button className="btn-primary" onClick={() => window.location.href = '/login'}>
             Login

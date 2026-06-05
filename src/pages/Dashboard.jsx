@@ -17,77 +17,35 @@ export default function Dashboard() {
   const [callsTotal, setCallsTotal] = useState(0)
 
   useEffect(() => {
-  //   const load = async () => {
-  //     try {
-  //       const summary = await api.getDashboardSummary()
-  //       setBrandCount(summary.brandCount || 0)
-  //       setPromptCount(summary.promptCount || 0)
-  //       setMessageCount(summary.messageCount || 0)
-  //       setGatewayApiHitCount(summary.gatewayApiHitCount ?? summary.gatewayHitCount ?? summary.gatewayApiHits ?? 0)
-  //       setRecoveryAgent(summary.recoveryAgent === 'Select Agent' ? 'Not selected' : summary.recoveryAgent)
-  //       setMessagingAgent(summary.messagingAgent === 'Select Agent' ? 'Not selected' : summary.messagingAgent)
-  //       setRecoveryAgentActive(summary.recoveryAgentActive !== false)
-  //       setMessagingAgentActive(summary.messagingAgentActive !== false)
-  //     } catch {
-  //     }
-  //   }
-  //   load()
-  // }, [])
-        const load = async () => {
-        try {
-          const summary = await api.getDashboardSummary()
+  const load = async () => {
+    try {
+      const summary = await api.getDashboardSummary()
 
-          setBrandCount(summary.brandCount || 0)
-          setPromptCount(summary.promptCount || 0)
-          setMessageCount(summary.messageCount || 0)
+      setBrandCount(summary.brandCount || 0)
+      setPromptCount(summary.promptCount || 0)
+      setMessageCount(summary.messageCount || 0)
 
-          setRecoveryAgent(
-            summary.recoveryAgent === 'Select Agent'
-              ? 'Not selected'
-              : summary.recoveryAgent
-          )
+      setRecoveryAgent(
+        summary.recoveryAgent === 'Select Agent' ? 'Not selected' : summary.recoveryAgent
+      )
+      setMessagingAgent(
+        summary.messagingAgent === 'Select Agent' ? 'Not selected' : summary.messagingAgent
+      )
+      setRecoveryAgentActive(summary.recoveryAgentActive !== false)
+      setMessagingAgentActive(summary.messagingAgentActive !== false)
 
-          setMessagingAgent(
-            summary.messagingAgent === 'Select Agent'
-              ? 'Not selected'
-              : summary.messagingAgent
-          )
+      // ✅ No tenantId needed — backend reads it from session cookie
+      const usage = await api.getGatewayUsage()
+      setCallsSuccessful(usage.callsSuccessful || 0)
+      setCallsFailed(usage.callsFailed || 0)
+      setCallsTotal(usage.callsTotal || 0)
 
-          setRecoveryAgentActive(
-            summary.recoveryAgentActive !== false
-          )
-
-          setMessagingAgentActive(
-            summary.messagingAgentActive !== false
-          )
-
-          const session = JSON.parse(
-            sessionStorage.getItem('tenant_session') || '{}'
-          )
-
-          if (session?.tenantId) {
-            const usage = await api.getGatewayUsage(
-              session.tenantId
-            )
-
-            setCallsSuccessful(
-              usage.callsSuccessful || 0
-            )
-
-            setCallsFailed(
-              usage.callsFailed || 0
-            )
-
-            setCallsTotal(
-              usage.callsTotal || 0
-            )
-          }
-        } catch (err) {
-          console.error(err)
-        }
-      }
-      load()
-    }, [])
+    } catch (err) {
+      console.error(err)
+    }
+  }
+  load()
+}, [])
 
   const { settings, getAgentName } = useSettings()
 
@@ -169,15 +127,7 @@ export default function Dashboard() {
           </div>
         </div>
       </div>
-      {/* <div className="card quick-summary" style={{ marginTop: 20, textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <h2>Dashboard Statistics</h2>
-        <div className="summary-grid" style={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-          <div className="summary-item" style={{ margin: 0, textAlign: 'center' }}>
-            <div className="number">{gatewayApiHitCount}</div>
-            <div className="label">Gateway API Key Hits</div>
-          </div>
-        </div>
-      </div> */}
+      
 
       <div className="dash-grid">
         {/* <Link to="/brand-guidelines" className="dash-card">

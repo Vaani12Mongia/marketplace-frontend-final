@@ -30,10 +30,6 @@ function denormalizeApis(apisArray, existingSettings) {
   return { ...existingSettings, ...flatKeys, apis: apisArray }
 }
 
-function getSession() {
-  try { return JSON.parse(sessionStorage.getItem('tenant_session') || 'null') } catch { return null }
-}
-
 export default function ApiSettings() {
   const [apis, setApis]                 = useState(DEFAULT_APIS)
   const [settings, setSettings]         = useState(null)
@@ -58,11 +54,10 @@ export default function ApiSettings() {
     } catch { setLoadError(true) }
   }
 
+  // ✅ No session check — backend reads tenantId from cookie
   const loadGatewayKey = async () => {
-    const session = getSession()
-    if (!session?.tenantId) return
     try {
-      const data = await api.getGatewaySubscription(session.tenantId)
+      const data = await api.getGatewaySubscription()
       if (data.status === 'approved') {
         setGwKey(data.primaryKey || '')
         setGwStatus('approved')
@@ -74,12 +69,11 @@ export default function ApiSettings() {
     } catch { setGwStatus('idle') }
   }
 
+  // ✅ No session check or payload — backend reads tenantId from cookie
   const handleRequestKey = async () => {
-    const session = getSession()
-    if (!session?.tenantId) return
     setGwRequesting(true)
     try {
-      await api.requestGatewayKey({ tenantId: session.tenantId, companyName: session.companyName || session.tenantId })
+      await api.requestGatewayKey()
       setGwStatus('pending')
     } catch { setGwStatus('error') }
     finally { setGwRequesting(false) }

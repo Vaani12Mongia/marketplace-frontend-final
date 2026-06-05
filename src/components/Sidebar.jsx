@@ -4,7 +4,7 @@ import { api } from '../api'
 import { useSettings } from '../contexts/SettingsContext'
 
 function getSession() {
-  try { return JSON.parse(sessionStorage.getItem('tenant_session') || 'null') } catch { return null }
+  try { return JSON.parse(sessionStorage.getItem('user_display') || 'null') } catch { return null }
 }
 
 export default function Sidebar() {
@@ -34,7 +34,6 @@ export default function Sidebar() {
     return () => { mounted = false }
   }, [])
 
-  // Sync selected agent IDs from settings (settings stores id or name — resolve to id)
   useEffect(() => {
     if (!settings || loading) return
 
@@ -54,8 +53,8 @@ export default function Sidebar() {
       if (session?.tenantId) await api.logout({ tenantId: session.tenantId })
     } catch {}
     finally {
-      sessionStorage.removeItem('tenant_session')
-      navigate('/login')
+      sessionStorage.removeItem('user_display')   // ← fixed
+      navigate('/login', { replace: true })
     }
   }
 
@@ -63,7 +62,6 @@ export default function Sidebar() {
     <aside className="sidebar">
       <div className="sidebar-title">
         {session?.companyName || 'Admin Dashboard'}
-        <div className="sidebar-tenant">ID: {session?.tenantId || '—'}</div>
       </div>
 
       <div className="agent-section">

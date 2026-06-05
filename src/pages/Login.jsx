@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { api } from '../api'
 import aionosLogo from '../assets/Aionos Dark logo.svg'
 
 // Feather Icons SVGs
@@ -46,9 +45,39 @@ export default function Login() {
     setError('')
     setLoading(true)
     try {
-      const session = await api.login({ email: form.email, password: form.password })
-      sessionStorage.setItem('tenant_session', JSON.stringify(session))
-      navigate('/app')
+      // Step 1: Login — server sets HttpOnly cookie, no sensitive data in response
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: form.email, password: form.password }),
+        credentials: 'include',  // required for cookie to be set
+      })
+
+      if (!res.ok) {
+        const err = await res.json()
+        throw new Error(err.detail || 'Something went wrong')
+      }
+
+      // Step 2: Fetch session info from server using the cookie
+      const meRes = await fetch('/api/auth/me', {
+        credentials: 'include',
+      })
+
+      if (!meRes.ok) {
+        throw new Error('Failed to fetch session')
+      }
+
+      const session = await meRes.json()
+
+      // Store only non-sensitive display info
+      sessionStorage.setItem('user_display', JSON.stringify({
+        email:       session.email,
+        companyName: session.companyName,
+        // tenantId:    session.tenantId,
+        // dbName:      session.dbName,
+      }))
+
+      navigate('/app', { replace: true })
     } catch (err) {
       setError(err.message || 'Something went wrong')
     } finally {

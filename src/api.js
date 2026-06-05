@@ -1,19 +1,17 @@
 const API_BASE = import.meta.env.VITE_API_BASE;
 const STATUS_ENDPOINT = import.meta.env.VITE_STATUS_ENDPOINT || '/api/status/live';
 
-function getSession() {
-  try { return JSON.parse(sessionStorage.getItem('tenant_session') || 'null') } catch { return null }
-}
-
 async function request(path, options = {}) {
-  const session = getSession()
+  // ✅ No session reading, no dbName/tenantId headers — cookie handles auth automatically
   const headers = { 'Content-Type': 'application/json', ...(options.headers || {}) }
-  if (session?.dbName) headers['x-db-name'] = session.dbName
-  if (session?.tenantId) headers['x-tenant-id'] = session.tenantId
 
-  const response = await fetch(`${API_BASE}${path}`, { headers, ...options })
+  const response = await fetch(`${API_BASE}${path}`, {
+    headers,
+    ...options,
+    credentials: 'include',  // sends the HttpOnly cookie automatically on every request
+  })
 
-  if (!response.ok) {
+  if (!response.ok && response.status !== 304) {
     let message = 'Request failed'
     try {
       const errorBody = await response.json()
@@ -33,6 +31,7 @@ async function authRequest(path, payload) {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
+    credentials: 'include',
   })
   const body = await response.json()
   if (!response.ok) throw new Error(body?.detail || 'Request failed')
@@ -43,7 +42,6 @@ async function statusRequest() {
   const response = await fetch(STATUS_ENDPOINT, {
     headers: { 'Content-Type': 'application/json' },
   })
-
   if (!response.ok) {
     let message = 'Failed to load status'
     try {
@@ -54,7 +52,6 @@ async function statusRequest() {
     }
     throw new Error(message)
   }
-
   return response.json()
 }
 
@@ -62,7 +59,6 @@ async function azureStatusRequest() {
   const response = await fetch(`${API_BASE}/azure-status`, {
     headers: { 'Content-Type': 'application/json' },
   })
-
   if (!response.ok) {
     let message = 'Failed to load Azure status'
     try {
@@ -73,50 +69,55 @@ async function azureStatusRequest() {
     }
     throw new Error(message)
   }
-
   return response.json()
 }
 
 export const api = {
-  login: (payload) => authRequest('/auth/login', payload),
+  login:    (payload) => authRequest('/auth/login', payload),
   register: (payload) => authRequest('/auth/register', payload),
-  logout: (payload) => authRequest('/auth/logout', payload),
+  logout:   ()        => authRequest('/auth/logout', {}),
+  getMe:    ()        => request('/auth/me'),
+
   submitContactQuery: (payload) => request('/contact', { method: 'POST', body: JSON.stringify(payload) }),
 
   getDashboardSummary: () => request('/dashboard-summary'),
-  getGatewayUsage: (tenantId) => request(`/gateway/usage/${tenantId}`),
+  // ✅ No tenantId in URL — backend reads it from session
+  getGatewayUsage: () => request('/gateway/usage/me'),
 
-  createBrandGuideline: (payload) => request('/brand-guidelines', { method: 'POST', body: JSON.stringify(payload) }),
-  updateBrandGuideline: (id, payload) => request(`/brand-guidelines/${id}`, { method: 'PUT', body: JSON.stringify(payload) }),
-  deleteBrandGuideline: (id) => request(`/brand-guidelines/${id}`, { method: 'DELETE' }),
+  createBrandGuideline:  (payload) => request('/brand-guidelines', { method: 'POST', body: JSON.stringify(payload) }),
+  updateBrandGuideline:  (id, payload) => request(`/brand-guidelines/${id}`, { method: 'PUT', body: JSON.stringify(payload) }),
+  deleteBrandGuideline:  (id) => request(`/brand-guidelines/${id}`, { method: 'DELETE' }),
 
-  listPrompts: () => request('/prompts'),
-  createPrompt: (payload) => request('/prompts', { method: 'POST', body: JSON.stringify(payload) }),
-  updatePrompt: (id, payload) => request(`/prompts/${id}`, { method: 'PUT', body: JSON.stringify(payload) }),
-  deletePrompt: (id) => request(`/prompts/${id}`, { method: 'DELETE' }),
+  listPrompts:    ()           => request('/prompts'),
+  createPrompt:   (payload)    => request('/prompts', { method: 'POST', body: JSON.stringify(payload) }),
+  updatePrompt:   (id, payload)=> request(`/prompts/${id}`, { method: 'PUT', body: JSON.stringify(payload) }),
+  deletePrompt:   (id)         => request(`/prompts/${id}`, { method: 'DELETE' }),
 
-  listMessageTemplates: () => request('/message-templates'),
-  createMessageTemplate: (payload) => request('/message-templates', { method: 'POST', body: JSON.stringify(payload) }),
-  updateMessageTemplate: (id, payload) => request(`/message-templates/${id}`, { method: 'PUT', body: JSON.stringify(payload) }),
-  deleteMessageTemplate: (id) => request(`/message-templates/${id}`, { method: 'DELETE' }),
+  listMessageTemplates:   ()            => request('/message-templates'),
+  createMessageTemplate:  (payload)     => request('/message-templates', { method: 'POST', body: JSON.stringify(payload) }),
+  updateMessageTemplate:  (id, payload) => request(`/message-templates/${id}`, { method: 'PUT', body: JSON.stringify(payload) }),
+  deleteMessageTemplate:  (id)          => request(`/message-templates/${id}`, { method: 'DELETE' }),
 
-  getSettings: () => request('/settings'),
-  saveSettings: (payload) => request('/settings', { method: 'PUT', body: JSON.stringify(payload) }),
-  patchAgentSettings: (payload) => request('/settings/agents', { method: 'PATCH', body: JSON.stringify(payload) }),
+  getSettings:       ()        => request('/settings'),
+  saveSettings:      (payload) => request('/settings', { method: 'PUT', body: JSON.stringify(payload) }),
+  patchAgentSettings:(payload) => request('/settings/agents', { method: 'PATCH', body: JSON.stringify(payload) }),
 
   getSystemPrompt: () => request('/system-prompt'),
-  listAgents: () => request('/agents'),
+  listAgents:      () => request('/agents'),
 
-  getLiveStatus: () => statusRequest(),
+  getLiveStatus:  () => statusRequest(),
   getAzureStatus: () => azureStatusRequest(),
 
-  // Gateway Key (APIM subscription)
-  getGatewaySubscription: (tenantId) => request(`/gateway/subscription?tenantId=${tenantId}`),
-  requestGatewayKey: (payload) => request('/gateway/request', { method: 'POST', body: JSON.stringify(payload) }),
-  approveGatewayKey: (tenantId) => request('/gateway/approve', { method: 'POST', body: JSON.stringify({ tenantId }) }),
+  // ✅ No tenantId anywhere — backend reads it from session cookie
+  getGatewaySubscription: () => request('/gateway/subscription'),
+  requestGatewayKey:      () => request('/gateway/request', { method: 'POST', body: JSON.stringify({}) }),
+  approveGatewayKey:      () => request('/gateway/approve', { method: 'POST', body: JSON.stringify({}) }),
 
   getHealthStatus: async () => {
-    const response = await fetch(`${API_BASE}/health`, { headers: { 'Content-Type': 'application/json' } })
+    const response = await fetch(`${API_BASE}/health`, {
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+    })
     if (!response.ok) {
       let message = 'Failed to load health status'
       try {
