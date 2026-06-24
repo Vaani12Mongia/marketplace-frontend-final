@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import aionosDarkLogo from '../assets/Aionos Dark logo.svg'
+import ibmDoc from '../assets/IBM DOC.pdf'
 
 const nav = ["Home", "Solution", "Features", "Impact", "Future"];
 
@@ -333,6 +334,7 @@ const Index = () => {
           <nav className="footer-nav">
             <a className="status-nav-link" href="/privacy">Privacy Policy</a>
             <a className="status-nav-link" href="/status">Status</a>
+            <a className="status-nav-link" href={ibmDoc} target="_blank" rel="noopener noreferrer">IBM Doc</a>
           </nav>
           <p className="copy">© 2026 Aviation Disruption Resiliency. All rights reserved.</p>
         </div>
