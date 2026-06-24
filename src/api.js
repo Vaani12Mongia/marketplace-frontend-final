@@ -1,3 +1,137 @@
+// const API_BASE = import.meta.env.VITE_API_BASE;
+// const STATUS_ENDPOINT = import.meta.env.VITE_STATUS_ENDPOINT || '/api/status/live';
+
+// async function request(path, options = {}) {
+//   // ✅ No session reading, no dbName/tenantId headers — cookie handles auth automatically
+//   const headers = { 'Content-Type': 'application/json', ...(options.headers || {}) }
+
+//   const response = await fetch(`${API_BASE}${path}`, {
+//     headers,
+//     ...options,
+//     credentials: 'include',  // sends the HttpOnly cookie automatically on every request
+//   })
+
+//   if (!response.ok && response.status !== 304) {
+//     let message = 'Request failed'
+//     try {
+//       const errorBody = await response.json()
+//       message = errorBody?.detail || message
+//     } catch {
+//       message = response.statusText || message
+//     }
+//     throw new Error(message)
+//   }
+
+//   if (response.status === 204) return null
+//   return response.json()
+// }
+
+// async function authRequest(path, payload) {
+//   const response = await fetch(`${API_BASE}${path}`, {
+//     method: 'POST',
+//     headers: { 'Content-Type': 'application/json' },
+//     body: JSON.stringify(payload),
+//     credentials: 'include',
+//   })
+//   const body = await response.json()
+//   if (!response.ok) throw new Error(body?.detail || 'Request failed')
+//   return body
+// }
+
+// async function statusRequest() {
+//   const response = await fetch(STATUS_ENDPOINT, {
+//     headers: { 'Content-Type': 'application/json' },
+//   })
+//   if (!response.ok) {
+//     let message = 'Failed to load status'
+//     try {
+//       const errorBody = await response.json()
+//       message = errorBody?.detail || message
+//     } catch {
+//       message = response.statusText || message
+//     }
+//     throw new Error(message)
+//   }
+//   return response.json()
+// }
+
+// async function azureStatusRequest() {
+//   const response = await fetch(`${API_BASE}/azure-status`, {
+//     headers: { 'Content-Type': 'application/json' },
+//   })
+//   if (!response.ok) {
+//     let message = 'Failed to load Azure status'
+//     try {
+//       const errorBody = await response.json()
+//       message = errorBody?.detail || message
+//     } catch {
+//       message = response.statusText || message
+//     }
+//     throw new Error(message)
+//   }
+//   return response.json()
+// }
+
+// export const api = {
+//   login:    (payload) => authRequest('/auth/login', payload),
+//   register: (payload) => authRequest('/auth/register', payload),
+//   logout:   ()        => authRequest('/auth/logout', {}),
+//   getMe:    ()        => request('/auth/me'),
+
+//   submitContactQuery: (payload) => request('/contact', { method: 'POST', body: JSON.stringify(payload) }),
+
+//   getDashboardSummary: () => request('/dashboard-summary'),
+//   // ✅ No tenantId in URL — backend reads it from session
+//   getGatewayUsage: () => request('/gateway/usage/me'),
+
+//   createBrandGuideline:  (payload) => request('/brand-guidelines', { method: 'POST', body: JSON.stringify(payload) }),
+//   updateBrandGuideline:  (id, payload) => request(`/brand-guidelines/${id}`, { method: 'PUT', body: JSON.stringify(payload) }),
+//   deleteBrandGuideline:  (id) => request(`/brand-guidelines/${id}`, { method: 'DELETE' }),
+
+//   listPrompts:    ()           => request('/prompts'),
+//   createPrompt:   (payload)    => request('/prompts', { method: 'POST', body: JSON.stringify(payload) }),
+//   updatePrompt:   (id, payload)=> request(`/prompts/${id}`, { method: 'PUT', body: JSON.stringify(payload) }),
+//   deletePrompt:   (id)         => request(`/prompts/${id}`, { method: 'DELETE' }),
+
+//   listMessageTemplates:   ()            => request('/message-templates'),
+//   createMessageTemplate:  (payload)     => request('/message-templates', { method: 'POST', body: JSON.stringify(payload) }),
+//   updateMessageTemplate:  (id, payload) => request(`/message-templates/${id}`, { method: 'PUT', body: JSON.stringify(payload) }),
+//   deleteMessageTemplate:  (id)          => request(`/message-templates/${id}`, { method: 'DELETE' }),
+
+//   getSettings:       ()        => request('/settings'),
+//   saveSettings:      (payload) => request('/settings', { method: 'PUT', body: JSON.stringify(payload) }),
+//   patchAgentSettings:(payload) => request('/settings/agents', { method: 'PATCH', body: JSON.stringify(payload) }),
+
+//   getSystemPrompt: () => request('/system-prompt'),
+//   listAgents:      () => request('/agents'),
+
+//   getLiveStatus:  () => statusRequest(),
+//   getAzureStatus: () => azureStatusRequest(),
+
+//   // ✅ No tenantId anywhere — backend reads it from session cookie
+//   getGatewaySubscription: () => request('/gateway/subscription'),
+//   requestGatewayKey:      () => request('/gateway/request', { method: 'POST', body: JSON.stringify({}) }),
+//   approveGatewayKey:      () => request('/gateway/approve', { method: 'POST', body: JSON.stringify({}) }),
+
+//   getHealthStatus: async () => {
+//     const response = await fetch(`${API_BASE}/health`, {
+//       headers: { 'Content-Type': 'application/json' },
+//       credentials: 'include',
+//     })
+//     if (!response.ok) {
+//       let message = 'Failed to load health status'
+//       try {
+//         const errorBody = await response.json()
+//         message = errorBody?.detail || message
+//       } catch {
+//         message = response.statusText || message
+//       }
+//       throw new Error(message)
+//     }
+//     return response.json()
+//   },
+// }
+
 const API_BASE = import.meta.env.VITE_API_BASE;
 const STATUS_ENDPOINT = import.meta.env.VITE_STATUS_ENDPOINT || '/api/status/live';
 
@@ -130,4 +264,10 @@ export const api = {
     }
     return response.json()
   },
+
+  // ── Master ──────────────────────────────────────────────────────────────
+  listTenants:               ()           => request('/master/tenants'),
+  switchTenant:               (tenantId)  => request('/master/switch-tenant', { method: 'POST', body: JSON.stringify({ tenantId }) }),
+  exitTenant:                 ()           => request('/master/exit-tenant', { method: 'POST' }),
+  getMasterDashboardSummary:  ()           => request('/master/dashboard-summary'),
 }
